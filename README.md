@@ -31,3 +31,7 @@ This script is designed to analyze financial data for a given list of tickers wi
 - You need to provide the `all_symbols.csv` file in the `src/data` folder
 - Adjust the input parameters as desired
 - Run the script by executing `python ana.py` on the command line
+
+## Disclaimer
+
+These scripts are for educational and research purposes only and are not intended for actual trading. It is important to conduct your own research and perform due diligence before making any financial decisions.
