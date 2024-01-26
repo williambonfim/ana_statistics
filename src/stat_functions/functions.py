@@ -6,7 +6,7 @@ class Stat:
     def compile_data(ticker, tf = 'H4'):
 
         # Read .csv file from a local path based on the ticker name and timeframe name
-        df = pd.read_csv('/Volumes/PiNAS/market/Data_MT5/{}_{}.csv'.format(tf, ticker))
+        df = pd.read_csv('ana_statistics/src/Data_MT5/{}_{}.csv'.format(tf, ticker)) #/Volumes/PiNAS/market/Data_MT5/{}_{}.csv
         # Adjust time column to Pandas datetime and set it as index of the df
         df['time'] = pd.to_datetime(df['time'])
         df.set_index('time', inplace=True)
@@ -23,7 +23,7 @@ class Stat:
         df['target'] = 0
 
         # Save the df into a .csv file
-        df.to_csv(f'/Volumes/PiNAS/market/1_Statistic_Method/Statistic Data/{ticker}_{tf}.csv')
+        df.to_csv(f'ana_statistics/src/Statistic Data/{ticker}_{tf}.csv')
 
         print(f'{ticker}_{tf}')
 
@@ -81,7 +81,7 @@ class Stat:
         df_results.drop(df_results.index[df_results['No_Trades'] < min_trade], inplace=True)
 
         # Drop results with success_rate between 25 - 75%
-        index_drop = df_results[(df_results['%_tp'] > 0.25) & (df_results['%_tp'] < 0.75)].index
+        index_drop = df_results[(df_results['%_tp'] > 0.20) & (df_results['%_tp'] < 0.80)].index
         df_results.drop(index_drop, inplace=True)
 
         return df_results
